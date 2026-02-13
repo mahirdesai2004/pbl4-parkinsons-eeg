@@ -62,6 +62,43 @@
             color: #4b5563;
         }
 
+        /* Light Mode Specific Overrides */
+        body.light-mode nav .text-white {
+            color: #111827 !important;
+        }
+
+        body.light-mode nav .text-slate-400 {
+            color: #4b5563 !important;
+        }
+
+        body.light-mode table th {
+            color: #374151 !important;
+            /* text-gray-700 */
+            border-bottom-color: #e5e7eb !important;
+        }
+
+        body.light-mode table td {
+            color: #1f2937 !important;
+            /* text-gray-800 */
+            border-bottom-color: #f3f4f6 !important;
+        }
+
+        body.light-mode footer {
+            background: #f3f4f6 !important;
+            /* bg-gray-100 */
+            border-top-color: #e5e7eb !important;
+        }
+
+        body.light-mode footer p {
+            color: #4b5563 !important;
+        }
+
+        body.light-mode .text-slate-300,
+        body.light-mode .text-slate-400,
+        body.light-mode .text-slate-500 {
+            color: #374151 !important;
+        }
+
         body.light-mode h1,
         body.light-mode h2,
         body.light-mode h3,
@@ -178,9 +215,9 @@
                         nature of
                         clinical assessments.</p>
                     <p><strong>EEG (Electroencephalography)</strong> offers a non-invasive, cost-effective biomarker.
-                        However, existing AI models often report <span class="text-red-400 font-bold">inflated
-                            accuracies</span> due to "subject-dependent" validation, where data from the same patient
-                        appears in both training and testing sets.</p>
+                        However, different validation strategies can significantly influence reported performance. This
+                        work adopts strict subject-level separation (LOSO) to ensure generalization to unseen
+                        individuals.</p>
                 </div>
             </div>
             <div class="space-y-6">
@@ -198,9 +235,9 @@
                     <h3 class="text-red-400 font-bold text-xs uppercase tracking-widest mb-3 section-subtitle">The
                         Critical Issue
                     </h3>
-                    <p class="text-slate-300 italic leading-relaxed">"Window-wise cross-validation" leads to data
+                    <p class="text-slate-300 italic leading-relaxed">"Window-wise cross-validation" can lead to data
                         leakage.
-                        Models memorize subject-specific EEG signatures rather than learning disease features. We
+                        Models may memorize subject-specific EEG signatures rather than learning disease features. We
                         address
                         this by strictly separating subjects.</p>
                 </div>
@@ -236,7 +273,7 @@
                             <td class="p-4">ANN</td>
                             <td class="p-4 text-red-400">Window-wise CV</td>
                             <td class="p-4">98.0%</td>
-                            <td class="p-4 italic text-slate-500">Inflated Performance</td>
+                            <td class="p-4 italic text-slate-500">Subject Mix</td>
                         </tr>
                         <tr class="border-b border-white/5 hover:bg-white/5 transition">
                             <td class="p-4 font-bold">Wagh et al. (2022)</td>
@@ -355,7 +392,7 @@
                                 exist in
                                 both training and testing sets. The model learns to recognize "Subject A's"
                                 bio-signature
-                                instead of Parkinson's features, leading to 99%+ fake accuracy.
+                                instead of Parkinson's features, leading to high but potentially misleading accuracy.
                             </p>
                         </div>
                         <div class="bg-black/20 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
@@ -450,16 +487,15 @@
 
         <div class="h-[1px] bg-white/10 my-16"></div>
 
-        <section id="results" class="glass p-12 rounded-[3.5rem]">
-            <h2 class="text-4xl md:text-5xl font-black mb-2 text-center uppercase tracking-tight">Results & <span
+        <section id="results" class="glass p-12 rounded-[3.5rem] overflow-hidden">
+            <h2 class="text-3xl md:text-4xl font-black mb-2 text-center uppercase tracking-tight">Results & <span
                     class="text-blue-500">Analysis</span></h2>
             <p class="text-center text-slate-500 text-xs font-medium uppercase tracking-widest mb-12 opacity-80">
                 Validated using strict Leave-One-Subject-Out cross-validation on 31 subjects</p>
-            <div class="grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
+            <div class="grid md:grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
                 <div class="h-80"><canvas id="resultsChart"></canvas></div>
                 <div class="space-y-6">
-                    <div
-                        class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
+                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
                         <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Accuracy /
                             Performance</span>
                     </div>
@@ -467,38 +503,38 @@
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mt-8 md:mt-12 text-center">
 
                         <div data-aos="fade-up"
-                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-blue-500 hover:scale-105 transition-transform duration-300 min-w-0 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]">
-                            <p class="text-slate-400 text-[10px] md:text-xs uppercase tracking-wide mb-1">
+                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-blue-500 hover:scale-105 transition-transform duration-300 min-w-0">
+                            <p class="text-slate-400 text-xs uppercase tracking-wide mb-1">
                                 Balanced Accuracy</p>
-                            <h3 class="text-4xl md:text-5xl font-black text-blue-400 counter" data-target="74.58">0</h3>
+                            <h3 class="text-3xl md:text-4xl font-black text-blue-400 counter" data-target="74.58">0</h3>
                         </div>
 
                         <div data-aos="fade-up" data-aos-delay="100"
-                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-purple-500 hover:scale-105 transition-transform duration-300 min-w-0 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]">
-                            <p class="text-slate-400 text-[10px] md:text-xs uppercase tracking-wide mb-1">AUC
+                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-purple-500 hover:scale-105 transition-transform duration-300 min-w-0">
+                            <p class="text-slate-400 text-xs uppercase tracking-wide mb-1">AUC
                             </p>
-                            <h3 class="text-4xl md:text-5xl font-black text-purple-400 counter" data-target="78.75">0
+                            <h3 class="text-3xl md:text-4xl font-black text-purple-400 counter" data-target="78.75">0
                             </h3>
                         </div>
 
                         <div data-aos="fade-up" data-aos-delay="200"
-                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-green-500 hover:scale-105 transition-transform duration-300 min-w-0 hover:shadow-[0_0_25px_rgba(34,197,94,0.4)]">
-                            <p class="text-slate-400 text-[10px] md:text-xs uppercase tracking-wide mb-1">
+                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-green-500 hover:scale-105 transition-transform duration-300 min-w-0">
+                            <p class="text-slate-400 text-xs uppercase tracking-wide mb-1">
                                 Sensitivity</p>
-                            <h3 class="text-4xl md:text-5xl font-black text-green-400 counter" data-target="86.67">0
+                            <h3 class="text-3xl md:text-4xl font-black text-green-400 counter" data-target="86.67">0
                             </h3>
                         </div>
 
                         <div data-aos="fade-up" data-aos-delay="300"
-                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-red-500 hover:scale-105 transition-transform duration-300 min-w-0 hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]">
-                            <p class="text-slate-400 text-[10px] md:text-xs uppercase tracking-wide mb-1">
+                            class="glass p-3 md:p-6 rounded-2xl border-t-4 border-red-500 hover:scale-105 transition-transform duration-300 min-w-0">
+                            <p class="text-slate-400 text-xs uppercase tracking-wide mb-1">
                                 Specificity</p>
-                            <h3 class="text-4xl md:text-5xl font-black text-red-400 counter" data-target="62.5">0</h3>
+                            <h3 class="text-3xl md:text-4xl font-black text-red-400 counter" data-target="62.5">0</h3>
                         </div>
 
                     </div>
                     <!-- Detailed Performance Comparison -->
-                    <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
                         <div class="glass p-6 rounded-2xl border-t-4 border-red-500 bg-red-500/5">
                             <h4 class="font-bold text-xs uppercase tracking-widest text-red-400 mb-2">Window vs Subject
                             </h4>
@@ -510,8 +546,8 @@
                                 <span class="text-slate-200 text-xs font-bold">Strict LOSO</span>
                                 <span class="text-2xl font-black text-white">74.58%</span>
                             </div>
-                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Drop confirms window-wise
-                                validation inflates accuracy by ~18%.</p>
+                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Different validation splits
+                                show performance gap.</p>
                         </div>
 
                         <div class="glass p-6 rounded-2xl border-t-4 border-blue-500 bg-blue-500/5">
@@ -588,16 +624,10 @@
                 <h3 class="text-xl font-bold uppercase tracking-widest text-slate-200 mb-6 flex items-center gap-3">
                     <i class="fas fa-rocket text-blue-500"></i> Future Work
                 </h3>
-                <ul class="space-y-4 text-slate-300 text-sm leading-relaxed list-disc pl-5 marker:text-blue-500">
-                    <li><strong>Multi-center Validation:</strong> Test generalization on diverse cohorts across
-                        hospitals.
-                    </li>
-                    <li><strong>Explainable AI:</strong> Implement Grad-CAM to visualize scalp topography of PD
-                        features.
-                    </li>
-                    <li><strong>Domain Adaptation:</strong> Transfer learning techniques to handle inter-subject
-                        variability.</li>
-                </ul>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Future work will extend this framework toward multi-center validation, enhanced interpretability
+                    analysis, and journal-level expansion of the current methodology.
+                </p>
             </div>
         </section>
 
@@ -605,20 +635,19 @@
 
         <section id="citation" class="text-center max-w-4xl mx-auto">
             <div class="glass p-10 rounded-[2rem] border-2 border-slate-700/50 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
-                <p class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-6">Cite This Work</p>
-                <p class="text-lg md:text-xl font-serif text-slate-200 italic leading-relaxed">
-                    "Desai, M., Singh, J. <span class="text-blue-400 not-italic font-bold">Towards Reliable and
-                        Interpretable
-                        Parkinson’s Detection from EEG: A Deep Learning Framework with Strict Subject-Wise
-                        Validation.</span>
-                    Accepted at <span class="font-bold not-italic text-white">ICICC 2026</span>."
+                <div class="absolute top-0 left-0 w-2 h-full bg-green-500"></div>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-6">Publication Status</p>
+                <p class="text-lg md:text-xl font-serif text-slate-200 italic leading-relaxed mb-6">
+                    Accepted for presentation at:<br>
+                    <span class="font-bold not-italic text-white">International Conference on Intelligent Computing and
+                        Communication (ICICC 2026)</span>
                 </p>
+                <div class="text-sm text-slate-400 space-y-1 font-mono">
+                    <p>Paper ID: ICICC2026-V015</p>
+                    <p>Author: Mahir Desai</p>
+                    <p>Guide: Dr. Juhi Singh</p>
+                </div>
                 <div class="mt-8 flex justify-center gap-4">
-                    <button
-                        class="px-6 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-mono text-slate-400 transition border border-white/5">
-                        <i class="fas fa-copy mr-2"></i> Copy BibTeX
-                    </button>
                     <span
                         class="px-6 py-2 bg-green-500/10 text-green-400 rounded-lg text-xs font-bold border border-green-500/20">
                         <i class="fas fa-check-circle mr-2"></i> Accepted Paper
