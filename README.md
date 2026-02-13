@@ -1,91 +1,84 @@
-# Reliable Parkinson’s Disease Detection from EEG using Strict Subject-Wise Validation
+# Reliable Parkinson’s Disease Detection from EEG
 
-## Abstract
+[![Conference](https://img.shields.io/badge/Conference-ICICC%202026-blue?style=for-the-badge&logo=ieee)](https://icicc-conf.com/)
+[![Status](https://img.shields.io/badge/Status-Accepted-success?style=for-the-badge)](https://github.com/mahirdesai2004/pbl4-parkinsons-eeg)
+[![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+
+> **Strict Subject-Wise Validation for Realistic Clinical Performance**
+
+## 🚀 Experience the Project
+🎯 **[View Live Presentation & Results](https://mahirdesai2004.github.io/pbl4-parkinsons-eeg/)**  
+*Interactive visualization of the problem statement, methodology, and results.*
+
+---
+
+## 📄 Abstract
 This project presents a robust deep learning framework for detecting Parkinson's Disease (PD) using EEG signals. Unlike many existing studies that use subject-dependent cross-validation (leading to data leakage and inflated accuracy), this work employs a **strict Leave-One-Subject-Out (LOSO)** validation strategy. We utilize **EEGNet**, a compact convolutional neural network designed for EEG signal processing, to classify subjects as PD or Healthy Controls (HC). The model achieves realistic clinical performance estimates, highlighting the importance of proper validation methodologies in medical AI.
 
-**Conference Paper Accepted at ICICC 2026.**
+## 📊 Dataset
+| Feature | Details |
+| :--- | :--- |
+| **Source** | [UCSD ds002778 (OpenNeuro)](https://openneuro.org/datasets/ds002778) |
+| **Subjects** | 31 (15 PD, 16 Healthy) |
+| **Data Type** | Resting-state EEG (ON medication) |
+| **Channels** | 40 scalp electrodes |
+| **Sampling** | 512 Hz |
 
-## Dataset
-*   **Source**: [UCSD ds002778 (OpenNeuro)](https://openneuro.org/datasets/ds002778/versions/1.0.4)
-*   **Subjects**: 31 total (15 Parkinson’s Disease, 16 Healthy Controls)
-*   **Data Type**: Resting-state EEG (ON medication for PD subjects)
-*   **Channels**: 40 scalp electrodes
-*   **Sampling Rate**: 512 Hz
-
-## Methodology
+## 🛠 Methodology
 The pipeline consists of the following stages:
-1.  **Preprocessing**: Artifact removal, filtering (1-40 Hz), and windowing (3-second epochs with 50% overlap).
-2.  **Model**: **EEGNet** (Lawhern et al., 2018), adapted for binary classification.
-    *   Temporal Convolution
-    *   Depthwise Spatial Convolution
-    *   Separable Convolution
-3.  **Validation**: **Leave-One-Subject-Out (LOSO)**.
-    *   For each fold, one subject is held out completely for testing.
-    *   The model is trained on the remaining 30 subjects.
-    *   This process is repeated for all 31 subjects to ensure no data leakage.
 
-## Results
+1.  **Preprocessing**: Artifact removal, filtering (1-40 Hz), and windowing (3s epochs, 50% overlap).
+2.  **Model**: **EEGNet** (Lawhern et al., 2018), adapted for binary classification.
+3.  **Validation**: **Leave-One-Subject-Out (LOSO)**.
+    *   *Strict separation*: No data from the test subject is seen during training.
+    *   Ensures reliable generalization to new patients.
+
+## 📈 Results
 Our strict subject-independent evaluation yields the following performance metrics:
 
-| Metric | Score |
-| :--- | :--- |
-| **Balanced Accuracy** | **74.58%** |
-| **AUC (Area Under Curve)** | **0.7875** |
-| **Sensitivity** | 86.67% |
-| **Specificity** | 62.50% |
+### Subject-Level Metrics
+| Metric | Score | vs Baseline |
+| :--- | :--- | :--- |
+| **Balanced Accuracy** | **74.58%** | *+3.12%* |
+| **AUC** | **0.7875** | *+0.13* |
+| **Sensitivity** | **86.67%** | *-* |
+| **Specificity** | **62.50%** | *-* |
 
-*Comparison*: This approach outperforms a baseline Bandpower + SVM model (Balanced Accuracy: 71.46%) while providing more reliable generalization estimates than subject-dependent methods.
+<p align="center">
+  <img src="figures/confusion_matrix.png" width="45%" alt="Confusion Matrix">
+  <img src="figures/roc_eegnet.png" width="45%" alt="ROC Curve">
+</p>
 
-## Repository Structure
-```
+## 📂 Repository Structure
+```bash
 ├── code/
-│   ├── 01_data_preprocessing.ipynb   # Initial data cleaning and windowing
-│   └── 02_train_loso_eegnet.ipynb    # EEGNet training with LOSO validation
-├── figures/                          # Project visualization and plots
-│   ├── confusion_matrix.png
-│   ├── roc_eegnet.png
-│   └── ...
-├── results/                          # Output metrics and logs
-│   ├── RESULTS_comparison_table.csv
-│   └── ...
-├── EEGNet_LOSO/                      # (Git-ignored) Model checkpoints and logs
-├── ML_BASELINE/                      # (Git-ignored) Baseline model artifacts
-├── index.html                        # GitHub Pages deployment
-├── requirements.txt                  # Python dependencies
-└── README.md                         # Project documentation
+│   ├── 01_data_preprocessing.ipynb   # Initial data cleaning
+│   └── 02_train_loso_eegnet.ipynb    # EEGNet training (LOSO)
+├── figures/                          # Plots & Visualizations
+├── results/                          # CSV Metrics & Logs
+├── EEGNet_LOSO/                      # Model Checkpoints
+├── index.html                        # Presentation Webpage
+└── requirements.txt                  # Dependencies
 ```
 
-## How to Run
+## 💻 How to Run
 
 ### 1. Installation
-Clone the repository and install the required dependencies:
 ```bash
 git clone https://github.com/mahirdesai2004/pbl4-parkinsons-eeg.git
 cd pbl4-parkinsons-eeg
 pip install -r requirements.txt
 ```
 
-### 2. Data Preparation
-*   Download the dataset from [OpenNeuro (ds002778)](https://openneuro.org/datasets/ds002778) and place it in the project root (or update paths in notebooks).
-*   Run the preprocessing notebook:
-    `code/01_data_preprocessing.ipynb`
-    *   This will generate `X.npy`, `y.npy`, and `groups.npy`.
+### 2. Execution
+*   **Preprocessing**: Run `code/01_data_preprocessing.ipynb` to generate dataset files.
+*   **Training**: Run `code/02_train_loso_eegnet.ipynb` to train the model using LOSO cross-validation.
 
-### 3. Training & Evaluation
-*   Run the training notebook:
-    `code/02_train_loso_eegnet.ipynb`
-    *   This will execute the LOSO validation loop.
-    *   Results and checkpoints will be saved locally.
+## 📝 Citation
+This paper has been accepted at the **International Conference on IoT, Communication and Coding (ICICC) 2026**.
 
-## Reproducibility Note
-*   **Random Seed**: We fix random seeds for NumPy and TensorFlow to ensure consistent results.
-*   **Hardware**: Training can be performed on a standard CPU or GPU (recommended).
-*   **Data Exclusion**: To comply with privacy and storage limits, raw EEG data (`.npy`) and trained model weights (`.h5`) are excluded from this repository.
-
-## Citation
-If you use this code or methodology, please cite our paper:
-
-> **[Author Names]**. "Reliable Parkinson’s Disease Detection from EEG using Strict Subject-Wise Validation." *International Conference on IoT, Communication and Coding (ICICC)*, 2026.
+> Citation details will be updated here upon publication.
 
 ---
 *Manipal University Jaipur, Department of Computer Science & Engineering.*
