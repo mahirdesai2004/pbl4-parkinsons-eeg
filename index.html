@@ -8,8 +8,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        /* AOS Scroll Animation */
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
             background-color: #020617;
@@ -170,6 +178,44 @@
             </div>
         </section>
 
+        <section id="pipeline" class="space-y-16 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tight">
+                Research <span class="text-blue-500">Workflow</span>
+            </h2>
+
+            <div class="flex flex-wrap justify-center gap-6 mt-10">
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-blue-500/20">
+                    Raw EEG
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-purple-500/20">
+                    Bandpass Filtering (1–40 Hz)
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-green-500/20">
+                    3s Windowing (50% Overlap)
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-blue-500/20">
+                    EEGNet (2.6K Params)
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-purple-500/20">
+                    Leave-One-Subject-Out
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-green-500/20">
+                    Subject-Level Aggregation
+                </div>
+
+                <div data-aos="fade-up" class="glass px-6 py-4 rounded-2xl border border-blue-500/20">
+                    Balanced Accuracy & AUC
+                </div>
+
+            </div>
+        </section>
+
         <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
             <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">Results & <span
                     class="text-blue-500">Analysis</span></h2>
@@ -180,7 +226,30 @@
                         class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
                         <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Accuracy /
                             Performance</span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">74.58%</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 text-center">
+
+                        <div data-aos="fade-up" class="glass p-6 rounded-2xl">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest">Balanced Accuracy</p>
+                            <h3 class="text-3xl font-black text-blue-400 counter" data-target="74.58">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" class="glass p-6 rounded-2xl">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest">AUC</p>
+                            <h3 class="text-3xl font-black text-purple-400 counter" data-target="78.75">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" class="glass p-6 rounded-2xl">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest">Sensitivity</p>
+                            <h3 class="text-3xl font-black text-green-400 counter" data-target="86.67">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" class="glass p-6 rounded-2xl">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest">Specificity</p>
+                            <h3 class="text-3xl font-black text-red-400 counter" data-target="62.5">0</h3>
+                        </div>
+
                     </div>
                     <p class="text-slate-500 text-sm italic text-justify leading-relaxed">Subject-Level Balanced
                         Accuracy: 74.58%<br>AUC: 0.7875<br>Sensitivity: 86.67%<br>Specificity: 62.5%<br>Compared against
@@ -194,6 +263,26 @@
                 Conference Paper Accepted – ICICC 2026
             </span>
         </div>
+
+        <section id="resources" class="text-center space-y-10 pt-20">
+            <h2 class="text-4xl font-black uppercase tracking-tight">
+                Code & <span class="text-blue-500">Resources</span>
+            </h2>
+
+            <div class="flex flex-wrap justify-center gap-6">
+
+                <a href="https://github.com/mahirdesai2004/pbl4-parkinsons-eeg" target="_blank"
+                    class="px-8 py-4 bg-blue-600 rounded-full text-xs font-black uppercase tracking-widest shadow-lg hover:bg-blue-500 transition">
+                    <i class="fab fa-github mr-2"></i> View GitHub Repository
+                </a>
+
+                <a href="#" target="_blank"
+                    class="px-8 py-4 bg-green-600 rounded-full text-xs font-black uppercase tracking-widest shadow-lg hover:bg-green-500 transition">
+                    <i class="fab fa-python mr-2"></i> View Colab Notebook
+                </a>
+
+            </div>
+        </section>
 
         <section id="team" class="text-center pt-10 border-t border-slate-900">
             <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
@@ -217,6 +306,27 @@
             Science & Engineering • 2026</p>
     </footer>
 
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / 100;
+
+                if (count < target) {
+                    counter.innerText = (count + inc).toFixed(2);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    </script>
     <script>
         // TIMER LOGIC
         let sec = 0;
