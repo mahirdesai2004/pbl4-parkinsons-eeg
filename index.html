@@ -184,142 +184,136 @@
                 Research <span class="text-blue-500">Workflow</span>
             </h2>
 
-            <section id="pipeline" class="space-y-16 text-center">
-                <h2 class="text-4xl font-black uppercase tracking-tight">
-                    Research <span class="text-blue-500">Workflow</span>
-                </h2>
-
-                <!-- Horizontal Process Diagram -->
-                <div class="flex flex-wrap justify-center items-center gap-4 mt-10">
-
-                    <div data-aos="fade-up" data-aos-delay="0"
-                        class="glass px-6 py-3 rounded-full border border-blue-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
-                        Raw EEG
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="100"
-                        class="glass px-6 py-3 rounded-full border border-purple-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-300">
-                        Filtering (1–40 Hz)
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="200"
-                        class="glass px-6 py-3 rounded-full border border-green-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(34,197,94,0.5)] transition-all duration-300">
-                        3s Windowing
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="300"
-                        class="glass px-6 py-3 rounded-full border border-blue-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
-                        EEGNet
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="400"
-                        class="glass px-6 py-3 rounded-full border border-purple-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-300">
-                        LOSO Validation
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="500"
-                        class="glass px-6 py-3 rounded-full border border-green-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(34,197,94,0.5)] transition-all duration-300">
-                        Subject Aggregation
-                    </div>
-
-                    <i class="fas fa-arrow-right text-slate-600 text-sm hidden md:block"></i>
-                    <i class="fas fa-arrow-down text-slate-600 text-sm md:hidden"></i>
-
-                    <div data-aos="fade-up" data-aos-delay="600"
-                        class="glass px-6 py-3 rounded-full border border-blue-500/30 text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
-                        Metrics (BA + AUC)
-                    </div>
-
+            <div class="relative max-w-2xl mx-auto space-y-8">
+                <!-- Step 1: Raw EEG -->
+                <div data-aos="fade-up"
+                    class="glass px-10 py-5 rounded-2xl border-l-4 border-white inline-block w-full">
+                    <h3 class="font-black text-lg uppercase tracking-wider">Raw EEG Data</h3>
                 </div>
-            </section>
 
-            <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
-                <h2 class="text-3xl font-black mb-2 text-center uppercase tracking-tight">Results & <span
-                        class="text-blue-500">Analysis</span></h2>
-                <p class="text-center text-slate-500 text-xs font-medium uppercase tracking-widest mb-12 opacity-80">
-                    Validated using strict Leave-One-Subject-Out cross-validation on 31 subjects</p>
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="h-80"><canvas id="resultsChart"></canvas></div>
-                    <div class="space-y-6">
-                        <div
-                            class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
-                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Accuracy /
-                                Performance</span>
-                        </div>
+                <i class="fas fa-arrow-down text-slate-500 text-xl animate-bounce"></i>
 
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 text-center">
+                <!-- Step 2: Preprocessing -->
+                <div data-aos="fade-up"
+                    class="glass px-10 py-5 rounded-2xl border-l-4 border-purple-500 inline-block w-full">
+                    <h3 class="font-black text-lg uppercase tracking-wider">Preprocessing and Windowing</h3>
+                </div>
 
-                            <div data-aos="fade-up"
-                                class="glass p-6 rounded-2xl border-t-4 border-blue-500 hover:scale-105 transition-transform duration-300">
-                                <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Balanced Accuracy</p>
-                                <h3 class="text-4xl font-black text-blue-400 counter" data-target="74.58">0</h3>
-                            </div>
+                <i class="fas fa-arrow-down text-slate-500 text-xl animate-bounce"></i>
 
-                            <div data-aos="fade-up" data-aos-delay="100"
-                                class="glass p-6 rounded-2xl border-t-4 border-purple-500 hover:scale-105 transition-transform duration-300">
-                                <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">AUC</p>
-                                <h3 class="text-4xl font-black text-purple-400 counter" data-target="78.75">0</h3>
-                            </div>
+                <!-- Step 3: EEGNet Architecture Block -->
+                <div data-aos="fade-up" class="p-8 rounded-[2rem] border-2 border-blue-500/30 bg-blue-500/5 relative">
+                    <div
+                        class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                        EEGNet Classifier</div>
 
-                            <div data-aos="fade-up" data-aos-delay="200"
-                                class="glass p-6 rounded-2xl border-t-4 border-green-500 hover:scale-105 transition-transform duration-300">
-                                <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Sensitivity</p>
-                                <h3 class="text-4xl font-black text-green-400 counter" data-target="86.67">0</h3>
-                            </div>
-
-                            <div data-aos="fade-up" data-aos-delay="300"
-                                class="glass p-6 rounded-2xl border-t-4 border-red-500 hover:scale-105 transition-transform duration-300">
-                                <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Specificity</p>
-                                <h3 class="text-4xl font-black text-red-400 counter" data-target="62.5">0</h3>
-                            </div>
-
-                        </div>
-                        <p class="text-slate-500 text-sm italic text-justify leading-relaxed">Subject-Level Balanced
-                            Accuracy: 74.58%<br>AUC: 0.7875<br>Sensitivity: 86.67%<br>Specificity: 62.5%<br>Compared
-                            against
-                            bandpower baseline (Balanced Accuracy: 71.46%)</p>
+                    <div class="space-y-4">
+                        <div class="glass px-6 py-3 rounded-xl border border-blue-500/20 text-sm font-bold">Input EEG
+                            Window (40 × 1536 × 1)</div>
+                        <i class="fas fa-arrow-down text-blue-500/50 text-sm"></i>
+                        <div class="glass px-6 py-3 rounded-xl border border-blue-500/20 text-sm font-bold">Temporal
+                            Convolution</div>
+                        <i class="fas fa-arrow-down text-blue-500/50 text-sm"></i>
+                        <div class="glass px-6 py-3 rounded-xl border border-blue-500/20 text-sm font-bold">Depthwise
+                            Convolution</div>
+                        <i class="fas fa-arrow-down text-blue-500/50 text-sm"></i>
+                        <div class="glass px-6 py-3 rounded-xl border border-blue-500/20 text-sm font-bold">Separable
+                            Convolution</div>
+                        <i class="fas fa-arrow-down text-blue-500/50 text-sm"></i>
+                        <div class="glass px-6 py-3 rounded-xl border border-blue-500/20 text-sm font-bold">Dense Layer
+                            (Sigmoid Activation)</div>
                     </div>
                 </div>
-            </section>
 
-            <div class="mt-12 text-center">
-                <span
-                    class="px-8 py-3 bg-green-600 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                    Conference Paper Accepted – ICICC 2026
-                </span>
+                <i class="fas fa-arrow-down text-slate-500 text-xl animate-bounce"></i>
+
+                <!-- Step 4: Aggregation -->
+                <div data-aos="fade-up"
+                    class="glass px-10 py-5 rounded-2xl border-l-4 border-green-500 inline-block w-full">
+                    <h3 class="font-black text-lg uppercase tracking-wider">Subject-Level Aggregation</h3>
+                </div>
+
+                <i class="fas fa-arrow-down text-slate-500 text-xl animate-bounce"></i>
+
+                <!-- Step 5: Evaluation -->
+                <div data-aos="fade-up"
+                    class="glass px-10 py-5 rounded-2xl border-l-4 border-pink-500 inline-block w-full">
+                    <h3 class="font-black text-lg uppercase tracking-wider">Evaluation / Metrics</h3>
+                </div>
             </div>
+        </section>
 
-
-
-            <section id="team" class="text-center pt-10 border-t border-slate-900">
-                <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
-                <div class="flex flex-wrap justify-center gap-10">
-                    <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
-                        <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-                        <p class="font-black text-xl text-slate-100">Dr. Juhi Singh</p>
+        <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
+            <h2 class="text-3xl font-black mb-2 text-center uppercase tracking-tight">Results & <span
+                    class="text-blue-500">Analysis</span></h2>
+            <p class="text-center text-slate-500 text-xs font-medium uppercase tracking-widest mb-12 opacity-80">
+                Validated using strict Leave-One-Subject-Out cross-validation on 31 subjects</p>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="h-80"><canvas id="resultsChart"></canvas></div>
+                <div class="space-y-6">
+                    <div
+                        class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Accuracy /
+                            Performance</span>
                     </div>
-                    <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-                        <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
-                        <p class="font-black text-xl text-slate-100">Mahir Desai</p>
-                        <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00345</p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 text-center">
+
+                        <div data-aos="fade-up"
+                            class="glass p-6 rounded-2xl border-t-4 border-blue-500 hover:scale-105 transition-transform duration-300">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Balanced Accuracy</p>
+                            <h3 class="text-4xl font-black text-blue-400 counter" data-target="74.58">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-delay="100"
+                            class="glass p-6 rounded-2xl border-t-4 border-purple-500 hover:scale-105 transition-transform duration-300">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">AUC</p>
+                            <h3 class="text-4xl font-black text-purple-400 counter" data-target="78.75">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-delay="200"
+                            class="glass p-6 rounded-2xl border-t-4 border-green-500 hover:scale-105 transition-transform duration-300">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Sensitivity</p>
+                            <h3 class="text-4xl font-black text-green-400 counter" data-target="86.67">0</h3>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-delay="300"
+                            class="glass p-6 rounded-2xl border-t-4 border-red-500 hover:scale-105 transition-transform duration-300">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Specificity</p>
+                            <h3 class="text-4xl font-black text-red-400 counter" data-target="62.5">0</h3>
+                        </div>
+
                     </div>
+                    <p class="text-slate-500 text-sm italic text-justify leading-relaxed">Subject-Level Balanced
+                        Accuracy: 74.58%<br>AUC: 0.7875<br>Sensitivity: 86.67%<br>Specificity: 62.5%<br>Compared
+                        against
+                        bandpower baseline (Balanced Accuracy: 71.46%)</p>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <div class="mt-12 text-center">
+            <span class="px-8 py-3 bg-green-600 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                Conference Paper Accepted – ICICC 2026
+            </span>
+        </div>
+
+
+
+        <section id="team" class="text-center pt-10 border-t border-slate-900">
+            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-slate-100">Dr. Juhi Singh</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
+                    <p class="font-black text-xl text-slate-100">Mahir Desai</p>
+                    <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00345</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
