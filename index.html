@@ -29,30 +29,45 @@
 
         body.light-mode {
             background: #f9fafb;
-            color: #1f2937;
+            /* bg-gray-50 */
+            color: #111827;
+            /* text-gray-900 */
         }
 
         body.light-mode .glass {
             background: #ffffff;
             border: 1px solid #e5e7eb;
+            /* border-gray-200 */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            /* shadow-md */
             backdrop-filter: none;
         }
 
         body.light-mode .text-slate-300 {
-            color: #1f2937;
+            color: #374151;
+            /* text-gray-700 */
         }
 
         body.light-mode .text-slate-400 {
             color: #4b5563;
+            /* text-gray-600 */
         }
 
         body.light-mode .text-slate-500 {
             color: #6b7280;
+            /* text-gray-500 */
         }
 
         body.light-mode .section-subtitle {
             color: #4b5563;
+        }
+
+        body.light-mode h1,
+        body.light-mode h2,
+        body.light-mode h3,
+        body.light-mode h4 {
+            color: #111827 !important;
+            /* text-gray-900 */
         }
 
         .glass {
@@ -153,69 +168,217 @@
 
         <div class="h-[1px] bg-white/10 my-12"></div>
 
-        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
+        <section id="introduction" class="grid md:grid-cols-2 gap-12 items-start">
             <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-6 uppercase">Problem Statement</h2>
-                <p class="text-slate-300 leading-relaxed text-justify text-base">Most EEG-based Parkinson’s disease
-                    detection
-                    studies report extremely high accuracy due to subject-dependent cross-validation, which causes data
-                    leakage. Such evaluation strategies lead to inflated performance estimates and poor generalization
-                    to unseen patients. There is a critical need for strict subject-wise validation to obtain realistic
-                    clinical performance.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 uppercase">Introduction & Motivation</h2>
+                <div class="space-y-4 text-slate-300 text-base leading-relaxed text-justify">
+                    <p><strong class="text-blue-400">Parkinson’s Disease (PD)</strong> is a progressive
+                        neurodegenerative
+                        disorder affecting millions globally. Early diagnosis is challenging due to the subjective
+                        nature of
+                        clinical assessments.</p>
+                    <p><strong>EEG (Electroencephalography)</strong> offers a non-invasive, cost-effective biomarker.
+                        However, existing AI models often report <span class="text-red-400 font-bold">inflated
+                            accuracies</span> due to "subject-dependent" validation, where data from the same patient
+                        appears in both training and testing sets.</p>
+                </div>
             </div>
             <div class="space-y-6">
-                <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
-                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2 section-subtitle">
-                        Literature Review /
-                        Market Research</h3>
-                    <p class="text-base text-slate-300 italic leading-relaxed">Recent deep learning approaches including
-                        CNNs, GNNs, and
-                        time-frequency models report accuracies exceeding 95% using window-wise cross-validation.
-                        However, studies applying strict Leave-One-Subject-Out (LOSO) validation report significantly
-                        lower but realistic performance (~63–75%), highlighting methodological weaknesses in existing
-                        literature.</p>
+                <div class="glass p-8 rounded-3xl border-r-4 border-purple-500/50">
+                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-3 section-subtitle">
+                        Research Objective
+                    </h3>
+                    <p class="text-slate-300 italic leading-relaxed">To develop a <strong>reliable, interpretable deep
+                            learning framework</strong> (EEGNet) for PD detection that is validated using a strictly
+                        <strong>subject-independent (Leave-One-Subject-Out)</strong> protocol, ensuring real-world
+                        applicability.
+                    </p>
                 </div>
-                <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
-                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2 section-subtitle">
-                        Research Gap /
-                        Innovation</h3>
-                    <p class="text-base text-slate-300 italic leading-relaxed">The major gap in existing research is the
-                        lack of strict
-                        subject-level validation. Most studies optimize architectural complexity while ignoring
-                        validation rigor. Our work emphasizes methodological discipline using Leave-One-Subject-Out
-                        validation to ensure real-world reliability.</p>
+                <div class="glass p-8 rounded-3xl border-r-4 border-red-500/50">
+                    <h3 class="text-red-400 font-bold text-xs uppercase tracking-widest mb-3 section-subtitle">The
+                        Critical Issue
+                    </h3>
+                    <p class="text-slate-300 italic leading-relaxed">"Window-wise cross-validation" leads to data
+                        leakage.
+                        Models memorize subject-specific EEG signatures rather than learning disease features. We
+                        address
+                        this by strictly separating subjects.</p>
                 </div>
             </div>
         </section>
 
         <div class="h-[1px] bg-white/10 my-12"></div>
 
+        <section id="lit-review" class="space-y-8">
+            <h2 class="text-3xl md:text-4xl font-black text-center uppercase tracking-tight mb-8">Literature <span
+                    class="text-blue-500">Review</span></h2>
+            <div class="glass p-8 rounded-3xl overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-slate-400 border-b border-slate-700 text-xs uppercase tracking-wider">
+                            <th class="p-4">Study</th>
+                            <th class="p-4">Model</th>
+                            <th class="p-4">Validation Strategy</th>
+                            <th class="p-4">Reported Accuracy</th>
+                            <th class="p-4">Limitation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300 text-sm">
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="p-4 font-bold">Oh et al. (2020)</td>
+                            <td class="p-4">1D CNN</td>
+                            <td class="p-4 text-red-400">Window-wise CV</td>
+                            <td class="p-4">99.5%</td>
+                            <td class="p-4 italic text-slate-500">Data Leakage / Overfitting</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="p-4 font-bold">Shaban (2021)</td>
+                            <td class="p-4">ANN</td>
+                            <td class="p-4 text-red-400">Window-wise CV</td>
+                            <td class="p-4">98.0%</td>
+                            <td class="p-4 italic text-slate-500">Inflated Performance</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="p-4 font-bold">Wagh et al. (2022)</td>
+                            <td class="p-4">GNN</td>
+                            <td class="p-4 text-green-400">LOSO (Subject-wise)</td>
+                            <td class="p-4">~69.0%</td>
+                            <td class="p-4 italic text-slate-500">Realistic but lower</td>
+                        </tr>
+                        <tr class="bg-blue-500/10 border-l-4 border-blue-500">
+                            <td class="p-4 font-bold text-blue-400">Our Work</td>
+                            <td class="p-4 font-bold">EEGNet</td>
+                            <td class="p-4 text-green-400 font-bold">Strict LOSO</td>
+                            <td class="p-4 font-bold text-white">74.58%</td>
+                            <td class="p-4 italic text-blue-300">Balanced & Reliable</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-center text-slate-500 text-xs italic mt-6">"Performance significantly drops when strict
+                    subject-level validation is applied, revealing the true generalization capability of models."</p>
+            </div>
+        </section>
+
+        <div class="h-[1px] bg-white/10 my-12"></div>
+
         <section id="methodology" class="space-y-12">
-            <h2 class="text-4xl md:text-5xl font-black text-center uppercase tracking-tight">System <span
+            <h2 class="text-4xl md:text-5xl font-black text-center uppercase tracking-tight">Materials & <span
                     class="text-blue-500">Methodology</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset / Input</h3>
-                    <p class="text-sm text-slate-500">Dataset: UCSD ds002778 (OpenNeuro)<br>Subjects: 31 (15 Parkinson’s
-                        Disease, 16 Healthy Controls)<br>Channels: 40 EEG channels<br>Sampling Rate: 512
-                        Hz<br>Windowing: 3-second windows with 50% overlap<br>Total Windows: 5964</p>
+
+            <!-- Dataset & Preprocessing -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-3xl border-t-4 border-blue-500">
+                    <h3 class="font-bold mb-4 uppercase text-sm tracking-widest text-blue-400 section-subtitle">Dataset
+                        Details</h3>
+                    <ul class="space-y-3 text-slate-300 text-sm leading-relaxed list-disc pl-5 marker:text-blue-500">
+                        <li><strong>Source:</strong> OpenNeuro (<code
+                                class="text-xs bg-white/10 px-2 py-1 rounded">ds002778</code>)</li>
+                        <li><strong>Subjects:</strong> 31 Total (15 Parkinson’s Disease, 16 Healthy Controls).</li>
+                        <li><strong>Modality:</strong> Resting-state EEG (eyes open & closed).</li>
+                        <li><strong>Format:</strong> BIDS (Brain Imaging Data Structure).</li>
+                        <li><strong>Hardware:</strong> 40-channel EEG cap @ 512 Hz sampling rate.</li>
+                    </ul>
                 </div>
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model / Architecture</h3>
-                    <p class="text-sm text-slate-500">Model: EEGNet (~2.6K parameters)<br>Temporal
-                        Convolution<br>Depthwise Spatial Convolution<br>Separable Convolution<br>Strict
-                        Leave-One-Subject-Out Cross-Validation</p>
+                <div class="glass p-8 rounded-3xl border-t-4 border-purple-500">
+                    <h3 class="font-bold mb-4 uppercase text-sm tracking-widest text-purple-400 section-subtitle">
+                        Preprocessing Pipeline
+                    </h3>
+                    <ul class="space-y-3 text-slate-300 text-sm leading-relaxed list-disc pl-5 marker:text-purple-500">
+                        <li><strong>Filtering:</strong> 1–40 Hz Bandpass filter (Butterworth, 4th order).</li>
+                        <li><strong>Referencing:</strong> Average re-referencing to remove common noise.</li>
+                        <li><strong>Windowing:</strong> 3-second epochs w/ 50% overlap.</li>
+                        <li><strong>Data Shape:</strong> 1536 samples per window × 40 channels.</li>
+                        <li><strong>Total Samples:</strong> 5964 labeled windows.</li>
+                    </ul>
                 </div>
-                <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
-                    <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Live Execution</h3>
-                    <a href="https://github.com/mahirdesai2004/pbl4-parkinsons-eeg" target="_blank"
-                        class="px-8 py-3 bg-green-600 rounded-full text-xs font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40 w-full inline-block">
-                        <i class="fab fa-github mr-2"></i> VIEW GITHUB REPOSITORY
-                    </a>
+            </div>
+
+            <!-- EEGNet Architecture -->
+            <div class="glass p-10 rounded-[2.5rem] border border-white/10">
+                <div class="md:flex justify-between items-start gap-12">
+                    <div class="md:w-1/2 space-y-6">
+                        <h3 class="text-2xl font-extrabold uppercase text-slate-100">EEGNet Architecture</h3>
+                        <p class="text-slate-300 leading-relaxed text-justify">
+                            We utilize <strong>EEGNet</strong>, a compact Convolutional Neural Network designed
+                            specifically
+                            for brain signals. Unlike heavy models (ResNet/VGG), EEGNet calculates <span
+                                class="italic text-slate-400">temporal</span> and <span
+                                class="italic text-slate-400">spatial</span> features efficiently with only
+                            <strong>~2.6K
+                                parameters</strong>, reducing overfitting on small medical datasets.
+                        </p>
+                        <div class="space-y-2">
+                            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                                <p class="text-xs font-mono text-blue-300">Block 1: Temporal Convolution</p>
+                                <p class="text-slate-400 text-xs">Learns frequency filters (like bandpass) from raw EEG.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                                <p class="text-xs font-mono text-purple-300">Block 2: Depthwise Spatial Conv</p>
+                                <p class="text-slate-400 text-xs">Learns spatial patterns across 40 electrodes.</p>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                                <p class="text-xs font-mono text-green-300">Block 3: Separable Convolution</p>
+                                <p class="text-slate-400 text-xs">Combines features efficiently => Sigmoid
+                                    Classification.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="md:w-1/2 mt-8 md:mt-0 p-8 bg-black/20 rounded-3xl border border-white/5 flex items-center justify-center">
+                        <div class="text-center space-y-4">
+                            <i class="fas fa-network-wired text-5xl text-blue-500/50"></i>
+                            <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Model Complexity</p>
+                            <h4 class="text-4xl font-black text-white">2,634</h4>
+                            <p class="text-sm text-slate-400">Total Parameters</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Validation Strategy -->
+            <div
+                class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-blue-600 to-blue-900 p-10 text-white shadow-2xl">
+                <div class="relative z-10">
+                    <h3
+                        class="text-xl font-bold uppercase tracking-widest mb-4 opacity-80 decoration-4 underline decoration-white/30 underline-offset-8">
+                        Validation Strategy (Core Contribution)</h3>
+                    <h2 class="text-3xl md:text-4xl font-black mb-8">Strict Leave-One-Subject-Out (LOSO)</h2>
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <p class="text-blue-100 leading-relaxed mb-6 font-medium text-lg">
+                                Why Window-wise CV fails:
+                            </p>
+                            <p class="text-sm text-blue-200 leading-relaxed text-justify">
+                                Standard validation randomly splits windows. This allows windows from "Subject A" to
+                                exist in
+                                both training and testing sets. The model learns to recognize "Subject A's"
+                                bio-signature
+                                instead of Parkinson's features, leading to 99%+ fake accuracy.
+                            </p>
+                        </div>
+                        <div class="bg-black/20 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="text-xs font-bold uppercase tracking-widest text-blue-200 mb-2">Our Protocol</p>
+                            <ul class="space-y-3 text-sm text-white">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Train on 30 Subjects</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Test on 1 Held-out Subject</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-sync text-blue-300"></i>
+                                    <span>Repeat 31 times & Average</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- IDK background decoration -->
+                <i class="fas fa-user-shield absolute -bottom-10 -right-10 text-9xl text-white/5"></i>
             </div>
         </section>
 
@@ -334,10 +497,50 @@
                         </div>
 
                     </div>
-                    <p class="text-slate-500 text-sm italic text-justify leading-relaxed">Subject-Level Balanced
-                        Accuracy: 74.58%<br>AUC: 0.7875<br>Sensitivity: 86.67%<br>Specificity: 62.5%<br>Compared
-                        against
-                        bandpower baseline (Balanced Accuracy: 71.46%)</p>
+                    <!-- Detailed Performance Comparison -->
+                    <div class="grid md:grid-cols-3 gap-6 mt-12">
+                        <div class="glass p-6 rounded-2xl border-t-4 border-red-500 bg-red-500/5">
+                            <h4 class="font-bold text-xs uppercase tracking-widest text-red-400 mb-2">Window vs Subject
+                            </h4>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-slate-400 text-xs">Window-wise</span>
+                                <span class="text-xl font-black text-red-300 decoration-line-through">92.0%</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-slate-200 text-xs font-bold">Strict LOSO</span>
+                                <span class="text-2xl font-black text-white">74.58%</span>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Drop confirms window-wise
+                                validation inflates accuracy by ~18%.</p>
+                        </div>
+
+                        <div class="glass p-6 rounded-2xl border-t-4 border-blue-500 bg-blue-500/5">
+                            <h4 class="font-bold text-xs uppercase tracking-widest text-blue-400 mb-2">Baseline
+                                Comparison</h4>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-slate-400 text-xs">Bandpower SVM</span>
+                                <span class="text-lg font-bold text-slate-300">71.46%</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-slate-200 text-xs font-bold">EEGNet (Ours)</span>
+                                <span class="text-2xl font-black text-white">74.58%</span>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">+3.12% improvement over
+                                standard
+                                spectral features.</p>
+                        </div>
+
+                        <div class="glass p-6 rounded-2xl border-t-4 border-purple-500 bg-purple-500/5">
+                            <h4 class="font-bold text-xs uppercase tracking-widest text-purple-400 mb-2">Spectral
+                                Insight</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                <span class="text-purple-300 font-bold">Beta Band (13-30 Hz)</span> dominance was
+                                observed
+                                in the learned filters, aligning with clinical literature on Parkinsonian resting
+                                tremors.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -363,11 +566,66 @@
             <p class="text-slate-500 text-sm italic">AUC = 0.7875 under strict Leave-One-Subject-Out validation.</p>
         </section>
 
-        <div class="mt-12 text-center">
-            <span class="px-8 py-3 bg-green-600 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                Conference Paper Accepted – ICICC 2026
-            </span>
-        </div>
+        <div class="h-[1px] bg-white/10 my-16"></div>
+
+        <section id="discussion" class="grid md:grid-cols-2 gap-12">
+            <div class="glass p-8 rounded-[2rem]">
+                <h3 class="text-xl font-bold uppercase tracking-widest text-slate-200 mb-6 flex items-center gap-3">
+                    <i class="fas fa-exclamation-triangle text-amber-500"></i> Limitations
+                </h3>
+                <ul class="space-y-4 text-slate-300 text-sm leading-relaxed list-disc pl-5 marker:text-amber-500">
+                    <li><strong>Sample Size:</strong> Limited to 31 subjects (15 PD, 16 HC), which impacts statistical
+                        power.
+                    </li>
+                    <li><strong>Single Dataset:</strong> Validated only on OpenNeuro ds002778; external validation is
+                        needed.</li>
+                    <li><strong>Modality:</strong> Relies solely on EEG; fusing with MRI/Voice could improve
+                        sensitivity.
+                    </li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-[2rem]">
+                <h3 class="text-xl font-bold uppercase tracking-widest text-slate-200 mb-6 flex items-center gap-3">
+                    <i class="fas fa-rocket text-blue-500"></i> Future Work
+                </h3>
+                <ul class="space-y-4 text-slate-300 text-sm leading-relaxed list-disc pl-5 marker:text-blue-500">
+                    <li><strong>Multi-center Validation:</strong> Test generalization on diverse cohorts across
+                        hospitals.
+                    </li>
+                    <li><strong>Explainable AI:</strong> Implement Grad-CAM to visualize scalp topography of PD
+                        features.
+                    </li>
+                    <li><strong>Domain Adaptation:</strong> Transfer learning techniques to handle inter-subject
+                        variability.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="h-[1px] bg-white/10 my-16"></div>
+
+        <section id="citation" class="text-center max-w-4xl mx-auto">
+            <div class="glass p-10 rounded-[2rem] border-2 border-slate-700/50 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-6">Cite This Work</p>
+                <p class="text-lg md:text-xl font-serif text-slate-200 italic leading-relaxed">
+                    "Desai, M., Singh, J. <span class="text-blue-400 not-italic font-bold">Towards Reliable and
+                        Interpretable
+                        Parkinson’s Detection from EEG: A Deep Learning Framework with Strict Subject-Wise
+                        Validation.</span>
+                    Accepted at <span class="font-bold not-italic text-white">ICICC 2026</span>."
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <button
+                        class="px-6 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-mono text-slate-400 transition border border-white/5">
+                        <i class="fas fa-copy mr-2"></i> Copy BibTeX
+                    </button>
+                    <span
+                        class="px-6 py-2 bg-green-500/10 text-green-400 rounded-lg text-xs font-bold border border-green-500/20">
+                        <i class="fas fa-check-circle mr-2"></i> Accepted Paper
+                    </span>
+                </div>
+            </div>
+        </section>
 
 
 
