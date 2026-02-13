@@ -509,7 +509,7 @@
                     class="text-blue-500">Analysis</span></h2>
             <p class="text-center text-slate-500 text-xs font-medium uppercase tracking-widest mb-12 opacity-80">
                 Validated using strict Leave-One-Subject-Out cross-validation on 31 subjects</p>
-            <div class="grid md:grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div class="grid md:grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center mb-12">
                 <div class="h-80"><canvas id="resultsChart"></canvas></div>
                 <div class="space-y-6">
                     <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
@@ -551,48 +551,49 @@
 
                     </div>
                     <!-- Detailed Performance Comparison -->
-                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
-                        <div class="glass p-6 rounded-2xl border-t-4 border-red-500 bg-red-500/5">
-                            <h4 class="font-bold text-xs uppercase tracking-widest text-red-400 mb-3">Window vs Subject
-                            </h4>
-                            <div class="flex flex-col gap-1 mb-3">
-                                <span class="text-slate-400 text-[10px] uppercase">Window-wise CV</span>
-                                <span class="text-xl font-black text-red-300 decoration-line-through">92.0%</span>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <span class="text-slate-200 text-[10px] font-bold uppercase">Strict LOSO</span>
-                                <span class="text-3xl font-black text-white">74.58%</span>
-                            </div>
-                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Different validation splits
-                                show performance gap.</p>
-                        </div>
+                </div>
+            </div>
 
-                        <div class="glass p-6 rounded-2xl border-t-4 border-blue-500 bg-blue-500/5">
-                            <h4 class="font-bold text-xs uppercase tracking-widest text-blue-400 mb-3">Baseline
-                                Comparison</h4>
-                            <div class="flex flex-col gap-1 mb-3">
-                                <span class="text-slate-400 text-[10px] uppercase">Bandpower SVM</span>
-                                <span class="text-lg font-bold text-slate-300">71.46%</span>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <span class="text-slate-200 text-[10px] font-bold uppercase">EEGNet (Ours)</span>
-                                <span class="text-3xl font-black text-white">74.58%</span>
-                            </div>
-                            <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">+3.12% improvement over
-                                standard spectral features.</p>
-                        </div>
-
-                        <div class="glass p-6 rounded-2xl border-t-4 border-purple-500 bg-purple-500/5">
-                            <h4 class="font-bold text-xs uppercase tracking-widest text-purple-400 mb-3">Spectral
-                                Insight</h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                <span class="text-purple-300 font-bold">Beta Band (13-30 Hz)</span> dominance was
-                                observed
-                                in the learned filters, aligning with clinical literature on Parkinsonian resting
-                                tremors.
-                            </p>
-                        </div>
+            <!-- Detailed Performance Comparison (Full Width) -->
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
+                <div class="glass p-6 rounded-2xl border-t-4 border-red-500 bg-red-500/5">
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-red-400 mb-3">Window vs Subject</h4>
+                    <div class="flex flex-col gap-1 mb-3">
+                        <span class="text-slate-400 text-[10px] uppercase">Window-wise CV</span>
+                        <span class="text-xl font-black text-red-300 decoration-line-through">92.0%</span>
                     </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-slate-200 text-[10px] font-bold uppercase">Strict LOSO</span>
+                        <span class="text-3xl font-black text-white">74.58%</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Different validation splits
+                        show performance gap.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border-t-4 border-blue-500 bg-blue-500/5">
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-blue-400 mb-3">Baseline
+                        Comparison</h4>
+                    <div class="flex flex-col gap-1 mb-3">
+                        <span class="text-slate-400 text-[10px] uppercase">Bandpower SVM</span>
+                        <span class="text-lg font-bold text-slate-300">71.46%</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-slate-200 text-[10px] font-bold uppercase">EEGNet (Ours)</span>
+                        <span class="text-3xl font-black text-white">74.58%</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">+3.12% improvement over
+                        standard spectral features.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border-t-4 border-purple-500 bg-purple-500/5">
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-purple-400 mb-3">Spectral
+                        Insight</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <span class="text-purple-300 font-bold">Beta Band (13-30 Hz)</span> dominance was
+                        observed
+                        in the learned filters, aligning with clinical literature on Parkinsonian resting
+                        tremors.
+                    </p>
                 </div>
             </div>
         </section>
