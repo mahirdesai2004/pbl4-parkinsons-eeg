@@ -1,6 +1,7 @@
 # Reliable Parkinson’s Disease Detection from EEG
 
-[![Conference](https://img.shields.io/badge/Conference-ICICC%202026-blue?style=for-the-badge&logo=ieee)](https://icicc-conf.com/)
+[![Conference](https://img.shields.io/badge/Conference-ICICC%202026-blue?style=for-the-badge)](https://icicc-conf.com/)
+[![Publisher](https://img.shields.io/badge/Publisher-Springer-orange?style=for-the-badge&logo=springer&logoColor=white)](https://www.springer.com/)
 [![Status](https://img.shields.io/badge/Status-Accepted-success?style=for-the-badge)](https://github.com/mahirdesai2004/pbl4-parkinsons-eeg)
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
@@ -8,7 +9,7 @@
 > **Strict Subject-Wise Validation for Realistic Clinical Performance**
 
 ## 🚀 Experience the Project
-🎯 **[View Live Presentation & Results](https://mahirdesai2004.github.io/pbl4-parkinsons-eeg/)**  
+🌐 **[View Project Website](https://mahirdesai2004.github.io/pbl4-parkinsons-eeg/)**  
 *Interactive visualization of the problem statement, methodology, and results.*
 
 ---
@@ -58,7 +59,7 @@ Our strict subject-independent evaluation yields the following performance metri
 ├── figures/                          # Plots & Visualizations
 ├── results/                          # CSV Metrics & Logs
 ├── EEGNet_LOSO/                      # Model Checkpoints
-├── index.html                        # Presentation Webpage
+├── index.html                        # Project Website
 └── requirements.txt                  # Dependencies
 ```
 
@@ -76,9 +77,12 @@ pip install -r requirements.txt
 *   **Training**: Run `code/02_train_loso_eegnet.ipynb` to train the model using LOSO cross-validation.
 
 ## 📝 Citation
-This paper has been accepted at the **International Conference on IoT, Communication and Coding (ICICC) 2026**.
+This paper has been accepted at the **9th International Conference on Innovative Computing and Communication (ICICC-2026)**.
 
-> Citation details will be updated here upon publication.
+*   **Organized by**: Shaheed Sukhdev College of Business Studies, University of Delhi.
+*   **Proceedings**: To be published in **Springer LNNS Series** (Lecture Notes in Networks and Systems).
+
+> Citation details will be updated here upon publication of the proceedings.
 
 ---
 *Manipal University Jaipur, Department of Computer Science & Engineering.*
