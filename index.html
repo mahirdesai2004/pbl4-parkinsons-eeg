@@ -25,6 +25,7 @@
             color: #f8fafc;
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body.light-mode {
@@ -62,13 +63,26 @@
         }
 
         /* Light Mode Specific Overrides */
-        body.light-mode nav .text-white {
-            color: #111827 !important;
+        body.light-mode nav {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
         }
 
-        body.light-mode nav .text-slate-400 {
-            color: #4b5563 !important;
+        body.light-mode #validation-card {
+            background: #2563eb !important;
+            background-image: none !important;
+            color: #ffffff !important;
         }
+
+        body.light-mode #validation-card p,
+        body.light-mode #validation-card h2,
+        body.light-mode #validation-card h3,
+        body.light-mode #validation-card li,
+        body.light-mode #validation-card i {
+            color: #ffffff !important;
+        }
+
+        body.light-mode .text-slate-300,
 
         body.light-mode table th {
             color: #374151 !important;
@@ -200,7 +214,8 @@
             <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
             <a href="#results" class="hover:text-blue-400 transition">Results</a>
             <a href="#team" class="hover:text-blue-400 transition">Team</a>
-            <button onclick="toggleTheme()" class="hover:text-yellow-400 transition"><i class="fas fa-sun"></i></button>
+            <button id="themeToggle" onclick="toggleTheme()" class="hover:text-yellow-400 transition"><i
+                    class="fas fa-sun"></i></button>
         </div>
     </nav>
 
@@ -316,7 +331,7 @@
         <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="system-methodology" class="space-y-12">
-            <h2 class="text-3xl md:text-5xl font-black text-center uppercase tracking-tight mb-12">System <span
+            <h2 class="text-3xl md:text-4xl font-black text-center uppercase tracking-tight mb-12">System <span
                     class="text-blue-500">Methodology</span></h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1: Dataset -->
@@ -377,7 +392,7 @@
         <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="methodology" class="space-y-12">
-            <h2 class="text-4xl md:text-5xl font-black text-center uppercase tracking-tight">Materials & <span
+            <h2 class="text-3xl md:text-4xl font-black text-center uppercase tracking-tight">Materials & <span
                     class="text-blue-500">Methodology</span></h2>
 
             <!-- Dataset & Preprocessing -->
@@ -452,7 +467,7 @@
             </div>
 
             <!-- Validation Strategy -->
-            <div
+            <div id="validation-card"
                 class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-blue-600 to-blue-900 p-10 text-white shadow-2xl">
                 <div class="relative z-10">
                     <h3
@@ -463,7 +478,7 @@
                     <div class="grid md:grid-cols-2 gap-12">
                         <div>
                             <p class="text-blue-100 leading-relaxed mb-6 font-medium text-lg">
-                                Why Window-wise CV fails:
+                                Effect of Window-wise Cross-Validation:
                             </p>
                             <p class="text-sm text-blue-200 leading-relaxed text-justify">
                                 Standard validation randomly splits windows. This allows windows from "Subject A" to
@@ -497,10 +512,10 @@
             </div>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="pipeline" class="space-y-16 text-center">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight">
+            <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">
                 Research <span class="text-blue-500">Workflow</span>
             </h2>
 
@@ -563,7 +578,7 @@
             </div>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="results" class="glass p-12 rounded-[3.5rem] overflow-hidden">
             <h2 class="text-3xl md:text-4xl font-black mb-2 text-center uppercase tracking-tight">Results & <span
@@ -571,7 +586,7 @@
             <p class="text-center text-slate-500 text-xs font-medium uppercase tracking-widest mb-12 opacity-80">
                 Validated using strict Leave-One-Subject-Out cross-validation on 31 subjects</p>
             <div class="grid md:grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center mb-12">
-                <div class="h-80"><canvas id="resultsChart"></canvas></div>
+                <div class="h-80 max-w-full"><canvas id="resultsChart"></canvas></div>
                 <div class="space-y-6">
                     <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
                         <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Accuracy /
@@ -627,8 +642,7 @@
                         <span class="text-slate-200 text-[10px] font-bold uppercase">Strict LOSO</span>
                         <span class="text-3xl font-black text-white">74.58%</span>
                     </div>
-                    <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Different validation splits
-                        show performance gap.</p>
+                    <p class="text-[10px] text-slate-500 mt-3 italic leading-tight">Observed performance difference.</p>
                 </div>
 
                 <div class="glass p-6 rounded-2xl border-t-4 border-blue-500 bg-blue-500/5">
@@ -659,7 +673,7 @@
             </div>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section class="text-center space-y-8">
             <h2 class="text-2xl font-black uppercase tracking-tight text-slate-300">Confusion Matrix (Subject-Level)
@@ -670,7 +684,7 @@
                 specificity (62.5%).</p>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section class="text-center space-y-8">
             <h2 class="text-2xl font-black uppercase tracking-tight text-slate-300">Receiver Operating Characteristic
@@ -680,7 +694,7 @@
             <p class="text-slate-500 text-sm italic">AUC = 0.7875 under strict Leave-One-Subject-Out validation.</p>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="discussion" class="grid md:grid-cols-2 gap-12">
             <div class="glass p-8 rounded-[2rem]">
@@ -709,7 +723,7 @@
             </div>
         </section>
 
-        <div class="h-[1px] bg-white/10 my-16"></div>
+        <div class="h-[1px] bg-white/10 my-12"></div>
 
         <section id="citation" class="text-center max-w-4xl mx-auto">
             <div class="glass p-10 rounded-[2rem] border-2 border-slate-700/50 relative overflow-hidden">
@@ -744,7 +758,7 @@
                     <p class="font-black text-xl text-slate-100">Dr. Juhi Singh</p>
                 </div>
                 <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Student</p>
                     <p class="font-black text-xl text-slate-100">Mahir Desai</p>
                     <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00345</p>
                 </div>
@@ -830,7 +844,7 @@
         // TOGGLE THEME
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
-            const icon = document.querySelector('button i');
+            const icon = document.querySelector('#themeToggle i');
             if (document.body.classList.contains('light-mode')) {
                 icon.classList.replace('fa-sun', 'fa-moon');
             } else {
