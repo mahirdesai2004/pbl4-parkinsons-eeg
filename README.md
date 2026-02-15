@@ -10,6 +10,7 @@
 
 ## 🚀 Experience the Project
 🌐 **[View Project Website](https://mahirdesai2004.github.io/pbl4-parkinsons-eeg/)**  
+📊 **[View Project Presentation](https://docs.google.com/presentation/d/1KppJAgqUCnIPFoWH1TPjRuJ3kur9LV0AP_PJ6f4o5zg/edit?usp=sharing)**  
 *Interactive visualization of the problem statement, methodology, and results.*
 
 ---
